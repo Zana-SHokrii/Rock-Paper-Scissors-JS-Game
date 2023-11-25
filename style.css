@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* LIGHT THEME */
+:root {
+    --primary-color: #265073;
+    --main-color: #2D9596;
+    --light-color: #9AD0C2;
+    --bg-color: #ECF4D6;
+}
+
+/* IF THEME WAS DARK */
+body.dark {
+    --primary-color: #ECF4D6;
+    --main-color: #9AD0C2;
+    --light-color: #2D9596;
+    --bg-color: #265073;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+/* TOGGLE THEME */
+.toggle-theme {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 68px;
+    height: 33px;
+}
+
+.toggle {
+    position: relative;
+    max-width: 100%;
+    width: 68px;
+    height: 33px;
+    padding: 4px 15px;
+    border-radius: 50px;
+    background-image: url(icon/light-pattern.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.dark .toggle {
+    background-image: url(icon/dark-pattern.svg);
+}
+
+.toggle::before {
+    content: '';
+    position: absolute;
+    top: 4.5px;
+    right: 5px;
+    width: 23px;
+    height: 23px;
+    background-color: var(--bg-color);
+    border-radius: 50%;
+    transform: translateX(-36px);
+    transition: all 0.3s ease;
+}
+
+.dark .toggle::before {
+    transform: translateX(0);
+    background-color: var(--primary-color);
+}
+
+.toggle .fa-solid {
+    position: absolute;
+}
+
+.toggle .fa-moon {
+    visibility: hidden;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--bg-color);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.dark .toggle .fa-moon {
+    animation: fade 0.5s ease forwards 0.1s;
+    opacity: 1;
+}
+
+@keyframes fade {
+    100% {
+        visibility: visible;
+    }
+}
+
+.toggle .fa-sun {
+    left: 7px;
+    top: 50%;
+    color: var(--primary-color);
+    transform: translateY(-50%);
+    animation: fade 0.5s ease forwards 0.2s;
+    opacity: 1;
+}
+
+.dark .toggle .fa-sun {
+    visibility: hidden;
+    opacity: 0;
+    color: var(--bg-color);
+}
+
+/* BOX */
+.box {
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 15px;
+    display: block;
+    width: 300px;
+}
+
+.dark .box {
+    background-color: var(--primary-color);
+}
+
+.box button {
+    display: none;
+}
+
+.start {
+    background-color: var(--bg-color);
+}
+
+.start * {
+    display: none;
+}
+
+.start button {
+    display: block;
+    padding: 8px 40px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--bg-color);
+    cursor: pointer;
+}
+
+.start button:hover {
+    transform: scale(0.98);
+}
+
+.start button:active {
+    transform: scale(0.95);
+}
+
+.showing-hands {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.showing-hands i {
+    font-size: 80px;
+    color: var(--bg-color);
+}
+
+.showing-hands #user {
+    margin: 20px 30px 20px 40px;
+    transform: rotate(90deg);
+}
+
+.shake #user {
+    animation: shake-hand-user 0.3s ease infinite alternate;
+}
+
+@keyframes shake-hand-user {
+    100% {
+        transform: rotate(105deg);
+    }
+}
+
+.showing-hands #cpu {
+    margin: 20px 40px 20px 30px;
+    transform: rotate(270deg) rotateY(180deg);
+}
+
+.shake #cpu {
+    animation: shake-hand-cpu 0.3s ease infinite alternate;
+}
+
+@keyframes shake-hand-cpu {
+    100% {
+        transform: rotate(255deg) rotateY(180deg);
+    }
+}
+
+.fa-hand-scissors#user {
+    margin: 20px 30px 20px 40px;
+    transform: rotate(0deg) rotateY(180deg);
+}
+
+.fa-hand-scissors#cpu {
+    margin: 20px 40px 20px 30px;
+    transform: rotate(0deg) rotateY(0deg);
+}
+
+.box p {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 10px 0 0;
+}
+
+.box #red {
+    color: red;
+}
+
+.box #green {
+    color: green;
+}
+
+.playing-hands {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 40px;
+}
+
+.playing-hands i {
+    position: relative;
+    color: var(--bg-color);
+    font-size: 35px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.playing-hands i.select {
+    opacity: 1;
+}
+
+.playing-hands i.fa-hand-scissors {
+    transform: rotate(90deg) rotateX(180deg);
+}
+
+.playing-hands i.fa-hand-scissors::after {
+    content: 'Scissors';
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    font-size: 11px;
+    font-weight: 600;
+    transform: rotate(90deg) rotateX(180deg);
+}
+
+.playing-hands i.fa-hand::after {
+    content: 'Paper';
+    position: absolute;
+    top: 143%;
+    left: 0%;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.playing-hands i.fa-hand-back-fist::after {
+    content: 'Rock';
+    position: absolute;
+    top: 143%;
+    left: 0%;
+    font-size: 11px;
+    font-weight: 600;
+}
