@@ -11,10 +11,6 @@ This game is ready to deploy by itself and requires no dependencies.
 -   Easy to use
 -   Less than 15 KB
 
-Light and dark theme
-Easy to use
-The size is less than 15 KB
-
 ## Installation instructions
 
 Clone & enjoy 😃
