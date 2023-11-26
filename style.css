@@ -50,6 +50,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
+    overflow: hidden;
     transition: all 0.4s ease;
 }
 
